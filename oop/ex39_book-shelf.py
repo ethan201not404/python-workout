@@ -27,10 +27,12 @@ class Shelf():
             self.books_on_shelf.append(book)
 
     def total_price(self):
-        total = 0
-        for book in self.books_on_shelf:
-            total += book.price
-        return total
+        """Return the total price"""
+        # total = 0
+        # for book in self.books_on_shelf:
+        #     total += book.price
+        # return total
+        return sum(book.price for book in self.books_on_shelf)
 
 
 b1 = Book("python", "david", 15)

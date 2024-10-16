@@ -2,7 +2,7 @@
 
 """Solution for chapter 9, Execise 40: Ice Cream Bowl with Limit."""
 
-LIMIT = 2
+SCOOPS_LIMIT = 2
 
 
 class Scoop():
@@ -13,15 +13,18 @@ class Scoop():
 
 class Bowl():
     """Bowl contains a list of Scoop."""
+    # class attribute before object __init__
+    # python doesn't have constants
+    max_scoops = SCOOPS_LIMIT
 
-    def __init__(self, limit=LIMIT):
+    def __init__(self):
         self.scoops = []
-        self.limit = limit
 
     def add_scoops(self, *new_scoops):
 
-        if len(self.scoops) >= self.limit:
-            raise f"reached the limit {self.limit}"
+        # refer to class attribue
+        if len(self.scoops) >= Bowl.max_scoops:
+            raise Exception(f"reached the bowl limit {Bowl.max_scoops}")
         for scoop in new_scoops:
             self.scoops.append(scoop)
 
@@ -32,4 +35,4 @@ s3 = Scoop("pair")
 
 bowl = Bowl()
 bowl.add_scoops(s1, s2)
-# bowl.add_scoops(s3)
+bowl.add_scoops(s3)
